@@ -1,0 +1,11 @@
+{
+  "navbar": [
+        {
+            "mainmenu": {
+                "name":"首页",
+                "href":"index.html"
+            },
+            "submenu":null
+        }
+    ]
+}
