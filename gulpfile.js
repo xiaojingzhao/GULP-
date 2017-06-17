@@ -69,11 +69,12 @@ gulp.task('server', function () {
     var server = gls.new(CUSTOM_SERVER);
     server.start();
 
-    var watcher = gulp.watch([CSS_PATH, JS_PATH, EJS_PATH]);
+    var watcher = gulp.watch([CSS, JS, EJS], ['rev']);
     watcher.on('change', function (file) {
         server.notify.apply(server, [file]);
     });
+    gulp.watch(CUSTOM_SERVER, server.start.bind(server));
 });
 
 gulp.task('default', ['server', 'rev']);
-gulp.task('build', ['template']);
+gulp.task('build', ['rev']);
