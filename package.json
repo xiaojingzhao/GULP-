@@ -28,7 +28,6 @@
     "gulp-rev": "^7.1.2",
     "gulp-rev-collector": "^1.2.2",
     "gulp-uglify": "^3.0.0",
-    "gulp-util": "^3.0.8",
-    "pump": "^1.0.2"
+    "gulp-util": "^3.0.8"
   }
 }
