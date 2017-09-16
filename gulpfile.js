@@ -8,6 +8,7 @@ var gutil           = require('gulp-util');
 var gls             = require('gulp-live-server');
 var ejs             = require('gulp-ejs');
 var rename          = require('gulp-rename');
+var browserSync     = require('browser-sync').create();
 
 const DIST = './dist';
 const TEMPLATE = './template';
@@ -62,12 +63,17 @@ gulp.task('template', ['minify-css', 'uglify-js'], function () {
 gulp.task('rev', ['template'], function () {
     return gulp.src([REV_JSON, HTML])
         .pipe(revCollector())
-        .pipe(gulp.dest(VIEW));
+        .pipe(gulp.dest(VIEW))
+        .pipe(browserSync.stream());
 });
 
 gulp.task('server', function () {
     var server = gls.new(CUSTOM_SERVER);
     server.start();
+
+    browserSync.init({
+        proxy: "localhost:4000"
+    });
 
     var watcher = gulp.watch([CSS, JS, EJS], ['rev']);
     watcher.on('change', function (file) {
