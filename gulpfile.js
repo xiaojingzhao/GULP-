@@ -72,7 +72,8 @@ gulp.task('server', function () {
     server.start();
 
     browserSync.init({
-        proxy: "localhost:4000"
+        proxy: "localhost:4000",
+        port: 5000
     });
 
     var watcher = gulp.watch([CSS, JS, EJS], ['rev']);
